@@ -19,3 +19,4 @@ trade_window_offset = [0.5, 0.5] # Top left-most cell of party member's trade [0
 stash_offset = [0.5, 0,5] # Top left-most cell of Stash grid
 
 stash_tab_offset = [0.5, 0.5] # Top left-most cell of tabbed list [0.0100, 0.1195]
+
