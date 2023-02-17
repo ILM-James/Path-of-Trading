@@ -1,16 +1,19 @@
 import requests
 
+currencyList = []
+
+with open('currency.txt') as currencyList_file:
+	for line in currencyList_file:
+		currencyList.append(line.replace("\n", ""))
 
 
 
-findCurrency = ['Mirror of Kalandra', 'Mirror Shard', 'Fracturing Orb', 'Tempering Orb', 'Secondary Regrading Lens', 'Orb of Dominance', 'Tainted Divine Teardrop', 'Orb of Alteration']
-
-def getChaosConversion(findCurrency):
-	print(findCurrency)
+def getChaosConversion(currencyList):
+	print(currencyList)
 	response = requests.get('https://poe.ninja/api/data/currencyoverview?league=Sanctum&type=Currency')
 	print (response.status_code)
 	json_data = response.json() if response and response.status_code == 200 else None
-	for orb in findCurrency:
+	for orb in currencyList:
 		print(orb)
 		if json_data and 'lines' in json_data:
 			for currency in json_data['lines']:
@@ -22,4 +25,4 @@ def getChaosConversion(findCurrency):
 		   			else:
 		   				print('1', orb, 'is', int(value), 'Chaos Orbs\n')
 
-getChaosConversion(findCurrency)
+getChaosConversion(currencyList)
